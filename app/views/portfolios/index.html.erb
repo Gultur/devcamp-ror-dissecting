@@ -12,4 +12,6 @@
 
   <!-- pour le lien d'édition, on doit passer en argument l'id du portfolio-->
   <%= link_to "Edit this Portfolio", edit_portfolio_path(portfolio_item) %>
+  <!-- indiquer la methode delete permet de determiner la "route", GET emmenerait vers show par exemple -->
+  <%= link_to "Delete this Portfolio", portfolio_path(portfolio_item), method: :delete, data: {confirm: "are you sure"} %>
 <% end %>
