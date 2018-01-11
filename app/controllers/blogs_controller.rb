@@ -60,7 +60,9 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      #l'usage de friendlyId implique la modification de set_blog, en rajoutant friendly entre blog et find
+      # afin de prendre le slug correspondant à l'ID
+      @blog = Blog.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
