@@ -9,4 +9,9 @@ class Blog < ApplicationRecord
 
   # on ne veut pas pouvoir créer/éditer de blg sans titre ou contenu
   validates_presence_of :title, :body
+
+  #ajout de la reference au topic
+  # belongs_to indique qu'il y a un topic pour spécifier le blog
+  belongs_to :topic
+
 end
