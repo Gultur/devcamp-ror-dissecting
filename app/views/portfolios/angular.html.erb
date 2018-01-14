@@ -1,0 +1,17 @@
+<h1>Angular Portfolio Items</h1>
+
+<%= link_to "Create New Item", new_portfolio_path %>
+
+<% @angular_portfolio_items.each do |portfolio_item| %>
+  <p><%= link_to portfolio_item.title, portfolio_show_path(portfolio_item) %></p>
+  <!--on peut tout à fait ne pas préciser "portfolio_path(portfolio_item.id"), rails sait par défaut qu'il s'agit de l'ID -->
+  <p><%= portfolio_item.subtitle %></p>
+  <p><%= portfolio_item.body %></p>
+  <%= image_tag(portfolio_item.thumb_image) if !portfolio_item.thumb_image.nil? %>
+  <!--  image_tag(portfolio_item.thumb_image) unless portfolio_item.thumb_image.nil?  -->
+
+  <!-- pour le lien d'édition, on doit passer en argument l'id du portfolio-->
+  <%= link_to "Edit this Portfolio", edit_portfolio_path(portfolio_item) %>
+  <!-- indiquer la methode delete permet de determiner la "route", GET emmenerait vers show par exemple -->
+  <%= link_to "Delete this Portfolio", portfolio_path(portfolio_item), method: :delete, data: {confirm: "are you sure"} %>
+<% end %>
